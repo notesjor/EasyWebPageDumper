@@ -97,6 +97,8 @@ namespace EasyWebPageDumper
               // the noscript is removed later
 
               var next = node.NextSibling;
+              node.ParentNode.RemoveChild(node);
+
               while (next == null || next.Name != "noscript")
                 continue;
 
@@ -108,11 +110,13 @@ namespace EasyWebPageDumper
                 if (!imgReplace.Attributes.Contains(a.Name))
                   imgReplace.Attributes.Add(a.Name, a.Value);
 
-              node.ParentNode.RemoveChild(node);
               continue;
             }
             if (src.Contains("data:"))
+            {
+              node.ParentNode.RemoveChild(node);
               continue;
+            }
             node.Attributes[attr].Value = managerPath.ConvertToRelative(src);
             var file = managerPath.ConvertUrlToPath(src);
             if (!File.Exists(file))

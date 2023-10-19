@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EasyWebPageDumper": {
+      "commandName": "Project",
+      "commandLineArgs": "https://euralex2022.ids-mannheim.de/ C:\\xampp\\htdocs"
+    }
+  }
+}
